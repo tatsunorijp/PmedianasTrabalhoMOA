@@ -29,18 +29,6 @@ public class Cruzamento{
         }
         k = 0;
 
-        System.out.println();
-        for(k = 0; k<list1.length; k++){
-            System.out.print(list1[k] + " ");
-        }
-        System.out.println();
-        for(k = 0; k<list1.length; k++){
-            System.out.print(list2[k] + " ");
-        }
-        System.out.println();
-        System.out.println();
-
-        k = 0;
         //seleciona medianas em comun
         for (x = 0; x < list1.length; x++){
             for(y = 0; y < list2.length; y++){
@@ -77,19 +65,6 @@ public class Cruzamento{
 
         }
 
-        System.out.println();
-        for(k = 0; k<list1.length; k++){
-            System.out.print(list1[k] + " ");
-        }
-        System.out.println();
-        for(k = 0; k<list1.length; k++){
-            System.out.print(list2[k] + " ");
-        }
-        System.out.println();
-        for(k = 0; k<list1.length; k++){
-            System.out.print(listaMedianas[k] + " ");
-        }
-        System.out.println();
 
         filho.setMedianas(listaMedianas);
 

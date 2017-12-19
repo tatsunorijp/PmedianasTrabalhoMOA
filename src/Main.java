@@ -39,10 +39,16 @@ public class Main {
         }
 
         for( i = 0; i<10 ; i++){
-            inicial.add(new Solucao(quantVertice, quantMedianas, arquivo));
+            Solucao solucao = new Solucao();
+            solucao.construtor(quantVertice, quantMedianas, arquivo);
+            inicial.add(solucao);
         }
 
-        cruzador.cruza(inicial.poll(), inicial.poll(), arquivo, quantMedianas, quantVertice);
+        for(i = 0; i<10; i++){
+            System.out.println(inicial.poll().imprimeAptidao());
+        }
+
+
 
 
         br.close();
