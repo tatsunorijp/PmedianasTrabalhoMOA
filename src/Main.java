@@ -1,15 +1,22 @@
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
 public class Main {
 
     public static void main(String[] args) throws IOException {
+        //Solucao solTemp = inicial.poll();
+        //ao retirar, nao esqueça de adicionar novamente
+
         Utilidades utilidades = new Utilidades();
+        PriorityQueue<Solucao> inicial = new PriorityQueue<Solucao>();
         int linha[] = new int[4];
         int i = 0, j = 0;
 
         //comandos do arquivo
-        File arq = new File("/home/tatsunori/IdeaProjects/trabalhoMOA2/src/entrada.txt");
+        File arq = new File("C:\\Users\\Tatsunori\\IdeaProjects\\PmedianasTrabalhoMOA\\src\\entrada.txt");
 
         FileReader leitor = new FileReader(arq);
         BufferedReader br = new BufferedReader(leitor);
@@ -32,18 +39,14 @@ public class Main {
                 arquivo[i][j] = Integer.parseInt((String) st.nextElement());
             }
         }
-        Solucao solucao1 = new Solucao(quantVertice, quantMedianas, arquivo);
-        Solucao solucao2 = new Solucao(quantVertice, quantMedianas, arquivo);
-        Solucao solucao3 = new Solucao(quantVertice, quantMedianas, arquivo);
-        Solucao solucao4 = new Solucao(quantVertice, quantMedianas, arquivo);
-        Solucao solucao5 = new Solucao(quantVertice, quantMedianas, arquivo);
-        Solucao solucao6 = new Solucao(quantVertice, quantMedianas, arquivo);
-        Solucao solucao7 = new Solucao(quantVertice, quantMedianas, arquivo);
-        Solucao solucao8 = new Solucao(quantVertice, quantMedianas, arquivo);
-        Solucao solucao9 = new Solucao(quantVertice, quantMedianas, arquivo);
-        Solucao solucao10 = new Solucao(quantVertice, quantMedianas, arquivo);
 
+        for( i = 0; i<10 ; i++){
+            inicial.add(new Solucao(quantVertice, quantMedianas, arquivo));
+        }
 
+        for(Solucao s: inicial){
+            s.imprimeAptidao();
+        }
 
         br.close();
         leitor.close();
