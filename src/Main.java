@@ -9,11 +9,12 @@ public class Main {
 
         Utilidades utilidades = new Utilidades();
         PriorityQueue<Solucao> inicial = new PriorityQueue<Solucao>();
+        Cruzamento cruzador = new Cruzamento();
         int linha[] = new int[4];
         int i = 0, j = 0;
 
         //comandos do arquivo
-        File arq = new File("C:\\Users\\Tatsunori\\IdeaProjects\\PmedianasTrabalhoMOA\\src\\entrada.txt");
+        File arq = new File("/home/tatsunori/IdeaProjects/trabalhoMOA2/src/arquivos/entrada.txt");
 
         FileReader leitor = new FileReader(arq);
         BufferedReader br = new BufferedReader(leitor);
@@ -41,22 +42,7 @@ public class Main {
             inicial.add(new Solucao(quantVertice, quantMedianas, arquivo));
         }
 
-        //tests para ver se esta ordenado
-        System.out.println(inicial.peek().getAptidao());
-
-        System.out.println();
-
-        System.out.println(inicial.poll().getAptidao());
-        System.out.println(inicial.poll().getAptidao());
-        System.out.println(inicial.poll().getAptidao());
-        System.out.println(inicial.poll().getAptidao());
-        System.out.println(inicial.poll().getAptidao());
-        System.out.println(inicial.poll().getAptidao());
-        System.out.println(inicial.poll().getAptidao());
-        System.out.println(inicial.poll().getAptidao());
-        System.out.println(inicial.poll().getAptidao());
-        System.out.println(inicial.poll().getAptidao());
-
+        cruzador.cruza(inicial.poll(), inicial.poll(), arquivo, quantMedianas, quantVertice);
 
 
         br.close();

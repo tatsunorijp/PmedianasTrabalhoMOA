@@ -8,7 +8,7 @@ public class Solucao implements Comparable<Solucao>{
     int vetVertice[];
     int medianas[];
     int capacidadeMediana[];
-    int aptidao;
+    double aptidao;
 
     Solucao (int quantVertice, int quantMedianas, int[][] arquivo){
         int i, j=0, k=0;
@@ -47,7 +47,7 @@ public class Solucao implements Comparable<Solucao>{
         }
 
         //calcula o valor
-        int resultadoAux = 0;
+        double resultadoAux = 0;
         for(i = 0; i < quantVertice; i++) {
             if (vetVertice[i] != -1) {
                 resultadoAux = (resultadoAux + (Utilidades.calculaDistancia(arquivo[i][0], arquivo[i][1],
@@ -64,12 +64,13 @@ public class Solucao implements Comparable<Solucao>{
 
         Solucao solucao = (Solucao) o;
 
-        return aptidao == solucao.aptidao;
+        return Double.compare(solucao.aptidao, aptidao) == 0;
     }
 
     @Override
     public int hashCode() {
-        return aptidao;
+        long temp = Double.doubleToLongBits(aptidao);
+        return (int) (temp ^ (temp >>> 32));
     }
 
     public int[] getVetVertice() {
@@ -100,14 +101,14 @@ public class Solucao implements Comparable<Solucao>{
         return aptidao;
     }
 
-    public void setAptidao(int aptidao) {
+    public void setAptidao(double aptidao) {
         this.aptidao = aptidao;
     }
 
 
     @Override
     public int compareTo(Solucao solucao) {
-        return (int) aptidao - solucao.aptidao;
+        return (int) (aptidao - solucao.aptidao);
     }
 }
 
