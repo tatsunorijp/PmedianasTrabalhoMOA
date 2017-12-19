@@ -1,8 +1,5 @@
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.PriorityQueue;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class Main {
 
@@ -44,9 +41,23 @@ public class Main {
             inicial.add(new Solucao(quantVertice, quantMedianas, arquivo));
         }
 
-        for(Solucao s: inicial){
-            s.imprimeAptidao();
-        }
+        //tests para ver se esta ordenado
+        System.out.println(inicial.peek().getAptidao());
+
+        System.out.println();
+
+        System.out.println(inicial.poll().getAptidao());
+        System.out.println(inicial.poll().getAptidao());
+        System.out.println(inicial.poll().getAptidao());
+        System.out.println(inicial.poll().getAptidao());
+        System.out.println(inicial.poll().getAptidao());
+        System.out.println(inicial.poll().getAptidao());
+        System.out.println(inicial.poll().getAptidao());
+        System.out.println(inicial.poll().getAptidao());
+        System.out.println(inicial.poll().getAptidao());
+        System.out.println(inicial.poll().getAptidao());
+
+
 
         br.close();
         leitor.close();

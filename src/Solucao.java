@@ -1,3 +1,4 @@
+import java.util.Comparator;
 import java.util.Random;
 
 /**
@@ -7,7 +8,7 @@ public class Solucao implements Comparable<Solucao>{
     int vetVertice[];
     int medianas[];
     int capacidadeMediana[];
-    double aptidao;
+    int aptidao;
 
     Solucao (int quantVertice, int quantMedianas, int[][] arquivo){
         int i, j=0, k=0;
@@ -46,20 +47,14 @@ public class Solucao implements Comparable<Solucao>{
         }
 
         //calcula o valor
-        double resultadoAux = 0;
+        int resultadoAux = 0;
         for(i = 0; i < quantVertice; i++) {
             if (vetVertice[i] != -1) {
-                resultadoAux = resultadoAux + (Utilidades.calculaDistancia(arquivo[i][0], arquivo[i][1],
-                        arquivo[vetVertice[i]][0], arquivo[vetVertice[i]][1]));
+                resultadoAux = (resultadoAux + (Utilidades.calculaDistancia(arquivo[i][0], arquivo[i][1],
+                                        arquivo[vetVertice[i]][0], arquivo[vetVertice[i]][1])));
             }
         }
         this.aptidao = resultadoAux;
-    }
-
-    public void imprimeAptidao(){
-        System.out.print("[");
-        System.out.print(this.aptidao);
-        System.out.println("]");
     }
 
     @Override
@@ -69,13 +64,12 @@ public class Solucao implements Comparable<Solucao>{
 
         Solucao solucao = (Solucao) o;
 
-        return Double.compare(solucao.aptidao, aptidao) == 0;
+        return aptidao == solucao.aptidao;
     }
 
     @Override
     public int hashCode() {
-        long temp = Double.doubleToLongBits(aptidao);
-        return (int) (temp ^ (temp >>> 32));
+        return aptidao;
     }
 
     public int[] getVetVertice() {
@@ -106,13 +100,15 @@ public class Solucao implements Comparable<Solucao>{
         return aptidao;
     }
 
-    public void setAptidao(double aptidao) {
+    public void setAptidao(int aptidao) {
         this.aptidao = aptidao;
     }
 
+
     @Override
     public int compareTo(Solucao solucao) {
-        return (int) (aptidao - solucao.aptidao);
+        return (int) aptidao - solucao.aptidao;
     }
 }
+
 
