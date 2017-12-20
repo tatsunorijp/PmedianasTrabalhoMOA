@@ -16,21 +16,21 @@ public class Solucao implements Comparable<Solucao>{
         this.medianas = new int[quantMedianas];
         this.capacidadeMediana = new int[quantMedianas];
 
-        atribuiMedianasCapacidades(quantMedianas, quantVertice, arquivo);
+        atribuiMedianas(quantMedianas, quantVertice, arquivo);
+        atribuiCapacidadesIniciais(quantMedianas, arquivo);
         atribuiVertices(quantVertice, quantMedianas, arquivo);
         calculaAptidao(quantVertice, arquivo, this.vetVertice);
 
     }
 
-    //seleciona as medianas, e calcula suas respectivas capacidades atuais, e altera no vetorSolucao quem eh mediana
-    public void atribuiMedianasCapacidades(int quantMedianas, int quantVertice, int arquivo[][]){
+    //seleciona as medianas, e altera no vetorSolucao quem eh mediana
+    public void atribuiMedianas(int quantMedianas, int quantVertice, int arquivo[][]){
         int i,j;
         Random gerador = new Random();
 
         //seleciona as medianas
         for(i = 0; i < quantMedianas; i++){
             medianas[i] = gerador.nextInt(quantVertice);
-            capacidadeMediana[i] = (arquivo[ medianas[i] ][2] - arquivo[ medianas[i]] [3]);
         }
 
         for(i = 0; i < quantVertice; i++) {
@@ -45,13 +45,21 @@ public class Solucao implements Comparable<Solucao>{
 
     }
 
+    //calcula suas respectivas capacidades atuais
+    public void atribuiCapacidadesIniciais(int quantMedianas, int arquivo[][]){
+        int i;
+        for(i = 0; i < quantMedianas; i++){
+            capacidadeMediana[i] = (arquivo[ medianas[i] ][2] - arquivo[ medianas[i]] [3]);
+        }
+    }
+
     //procura uma mediana para ser atribuida ao vertice
     public void atribuiVertices(int quantVertice, int quantMedianas, int arquivo[][]){
         int i,j;
 
         for(i = 0; i< quantVertice; i++) {
             for (j = 0; j < quantMedianas; j++) {
-                if ((this.capacidadeMediana[j] - arquivo[i][3]) >= 0) { //verifica a capacidade atual da mediana
+                if (((this.capacidadeMediana[j] - arquivo[i][3]) >= 0) && (i != this.medianas[j])) { //verifica a capacidade atual da mediana
                     this.vetVertice[i] = this.medianas[j];
                     this.capacidadeMediana[j] = this.capacidadeMediana[j] - arquivo[i][3];
                     break;
@@ -98,6 +106,34 @@ public class Solucao implements Comparable<Solucao>{
 
     public void setMedianas(int[] medianas) {
         this.medianas = medianas;
+    }
+
+    public int[] getVetVertice() {
+        return vetVertice;
+    }
+
+    public int[] getCapacidadeMediana() {
+        return capacidadeMediana;
+    }
+
+    public void setCapacidadeMediana(int[] capacidadeMediana) {
+        this.capacidadeMediana = capacidadeMediana;
+    }
+
+    public void setVetVertice(int[] vetVertice) {
+        this.vetVertice = vetVertice;
+    }
+
+    public int[] getMedianas() {
+        return medianas;
+    }
+
+    public double getAptidao() {
+        return aptidao;
+    }
+
+    public void setAptidao(double aptidao) {
+        this.aptidao = aptidao;
     }
 
     @Override

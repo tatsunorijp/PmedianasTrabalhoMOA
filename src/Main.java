@@ -44,9 +44,19 @@ public class Main {
             inicial.add(solucao);
         }
 
-        for(i = 0; i<10; i++){
-            System.out.println(inicial.poll().imprimeAptidao());
-        }
+        //heeta nois...
+        //ate os codigos estao gays ultimamente
+        Solucao pai1 = inicial.poll();
+        Solucao pai2 = inicial.poll();
+        Solucao filho = cruzador.cruza(pai1, pai2, arquivo, quantMedianas, quantVertice);
+
+        System.out.println();
+        System.out.println("Main:");
+        System.out.println();
+        System.out.println("pai1: " + pai1.imprimeAptidao());
+        System.out.println("pai2: " + pai2.imprimeAptidao());
+        System.out.println("filho: " + filho.imprimeAptidao());
+
 
 
 
